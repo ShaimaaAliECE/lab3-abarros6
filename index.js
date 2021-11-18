@@ -51,8 +51,8 @@ app.get('/login', (req, res) => {
 app.get('/add-user', (req,res) => {
   let conn = newConnection();
   conn.connect();
-  console.log("hmmmmmmm");
-  conn.query(`insert into Users values ('${req.query.name}',${req.query.value},${req.query.value},${req.query.value},${req.query.value},${req.query.value},${req.query.value},${req.query.value},${req.query.value},${req.query.value},${req.query.value})`
+  console.log(req.query.T1);
+  conn.query(`insert into Users values ('${req.query.name}','${req.query.T1}','${req.query.T2}','${req.query.T3}','${req.query.T4}','${req.query.T5}','${req.query.T6}','${req.query.T7}','${req.query.T8}','${req.query.T9}','${req.query.T10}')`
           ,(err,rows,fields) => {
               res.redirect('/');        
           } );
@@ -63,14 +63,17 @@ app.get('/add-user', (req,res) => {
 app.get('/add-times', (req,res) => {
   let conn = newConnection();
   conn.connect();
-  console.log("hmmmmmmm");
-  conn.query(`UPDATE Time SET T1 = ${req.query.name}, T2 = ${req.query.name}, T3 = ${req.query.name}, T4 = ${req.query.name}, T5 = ${req.query.name}, T6 = ${req.query.name}, T7 = ${req.query.name}, T8 = ${req.query.name}, T9 = ${req.query.name}, T10 = ${req.query.name},)`
-          ,(err,rows,fields) => {
-              res.redirect('/');        
-          } );
+  console.log(req.query.T1);
+  conn.query( `UPDATE Time SET  T1 = '${req.query.T1}', T2 = '${req.query.T2}', T3 = '${req.query.T3}', T4 = '${req.query.T4}', T5 = '${req.query.T5}', T6 = '${req.query.T6}', T7 = '${req.query.T7}', T8 = '${req.query.T8}', T9 = '${req.query.T9}', T10 = '${req.query.T10}'`
+          , (err,rows,fields) => {
+              if (err)
+                  console.log(err);
+              else
+                  console.log('row updated');
+                  res.redirect('/');
+          });
 
   conn.end();
-  console.log('connection ended');
 })
 
 app.use(express.static('frontend'))

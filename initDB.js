@@ -34,16 +34,16 @@ conn.query(`Drop Table Users`,
 //init the time table with values that only the admin user can edit
 conn.query(`CREATE TABLE Time
             (
-                T1 int(2),
-                T2 int(2),
-                T3 int(2),
-                T4 int(2),
-                T5 int(2),
-                T6 int(2),
-                T7 int(2),
-                T8 int(2),
-                T9 int(2),
-                T10 int(2)
+                T1 varchar(50),
+                T2 varchar(50),
+                T3 varchar(50),
+                T4 varchar(50),
+                T5 varchar(50),
+                T6 varchar(50),
+                T7 varchar(50),
+                T8 varchar(50),
+                T9 varchar(50),
+                T10 varchar(50)
             )
             ` 
             , (err,rows,fields) => {
@@ -57,16 +57,16 @@ conn.query(`CREATE TABLE Time
 conn.query(`CREATE TABLE Users
             (
                 Name varchar(100),
-                T1 int(1),
-                T2 int(1),
-                T3 int(1),
-                T4 int(1),
-                T5 int(1),
-                T6 int(1),
-                T7 int(1),
-                T8 int(1),
-                T9 int(1),
-                T10 int(1)
+                T1 varchar(100),
+                T2 varchar(100),
+                T3 varchar(100),
+                T4 varchar(100),
+                T5 varchar(100),
+                T6 varchar(100),
+                T7 varchar(100),
+                T8 varchar(100),
+                T9 varchar(100),
+                T10 varchar(100)
             )
             ` 
             , (err,rows,fields) => {
