@@ -2,17 +2,17 @@
 
 const mysql = require('mysql');
 
-let conn = mysql.createConnection({
+const conn = mysql.createConnection({
     host:'34.134.27.235',
-    user: 'user',
-    password:'6474584026Ab...',
-    database:'mysql-db-instance'
+    user: 'root',
+    password:'mypassword',
+    database:'usersDB'
 });
 
 conn.connect();
 
-/*
-conn.query(`Drop Table Product`,
+//if there are tables in place already then reset them
+conn.query(`Drop Table Time`,
                 (err,rows,fields) => {
                     if (err)
                         console.log(err);
@@ -20,11 +20,30 @@ conn.query(`Drop Table Product`,
                         console.log('Table Dropped');
                 }
             )
-conn.query(`CREATE TABLE Product
+
+conn.query(`Drop Table Users`,
+            (err,rows,fields) => {
+                if (err)
+                    console.log(err);
+                else
+                    console.log('Table Dropped');
+            }
+        )
+
+
+//init the time table with values that only the admin user can edit
+conn.query(`CREATE TABLE Time
             (
-                Description varchar(100),
-                Price   Dec(6,3),
-                imgPath varchar(100)
+                T1 int(2),
+                T2 int(2),
+                T3 int(2),
+                T4 int(2),
+                T5 int(2),
+                T6 int(2),
+                T7 int(2),
+                T8 int(2),
+                T9 int(2),
+                T10 int(2)
             )
             ` 
             , (err,rows,fields) => {
@@ -33,8 +52,31 @@ conn.query(`CREATE TABLE Product
                 else
                     console.log('Table Created');
             })
-// {"desc":"Table","price":"200","imgPath":"/imgs/Table.jpg"}
-conn.query( `insert into Product values ("Table",200,"/imgs/Table.jpg")`
+
+//the int data type is used to represent the true = 1 and false = 0
+conn.query(`CREATE TABLE Users
+            (
+                Name varchar(100),
+                T1 int(1),
+                T2 int(1),
+                T3 int(1),
+                T4 int(1),
+                T5 int(1),
+                T6 int(1),
+                T7 int(1),
+                T8 int(1),
+                T9 int(1),
+                T10 int(1)
+            )
+            ` 
+            , (err,rows,fields) => {
+                if (err)
+                    console.log(err);
+                else
+                    console.log('Table Created');
+            })
+
+conn.query( `insert into Time values (0,1,2,3,4,5,6,7,8,9)`
             , (err,rows,fields) => {
                 if (err)
                     console.log(err);
@@ -42,16 +84,13 @@ conn.query( `insert into Product values ("Table",200,"/imgs/Table.jpg")`
                     console.log('One row inserted');
             });
 
-conn.query( `select * from Product `
+conn.query( `insert into Users values ('testName',1,1,1,1,1,1,1,1,1,1)`
             , (err,rows,fields) => {
                 if (err)
                     console.log(err);
                 else
                     console.log('One row inserted');
-                for (r of rows)
-                    console.log(r);
             });
 
-*/
 
 conn.end();

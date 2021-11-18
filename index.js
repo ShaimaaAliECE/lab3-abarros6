@@ -14,6 +14,10 @@ app.use(express.urlencoded({
   extended: true
 }))
 
+app.get('/guest', (req, res) => {
+  res.sendFile('/frontend/guest.html', { root: __dirname })
+})
+
 app.post('/login', (req, res) => {
   let userName = req.body.usr;
   let password = req.body.pwd;
@@ -21,9 +25,35 @@ app.post('/login', (req, res) => {
 
   if (userName == 'admin' && password == '123') {
     message = "Welcome";
+    res.sendFile('/frontend/admin.html', { root: __dirname })
   }
 
-  req.send(message)
+  res.send(message)
+})
+
+app.get('/login', (req, res) => {
+  let userName = req.body.usr;
+  let password = req.body.pwd;
+  let message = "Access denied";
+
+  if (userName == 'admin' && password == '123') {
+    message = "Welcome";
+    res.sendFile('/frontend/admin.html', { root: __dirname })
+  }
+
+  res.send(message)
+})
+
+app.get('/add-user', (req,res) => {
+  let conn = newConnection();
+  conn.connect();
+  console.log("hmmmmmmm");
+  conn.query(`insert into Users values ('${req.query.name}',${req.query.value},${req.query.value},${req.query.value},${req.query.value},${req.query.value},${req.query.value},${req.query.value},${req.query.value},${req.query.value},${req.query.value})`
+          ,(err,rows,fields) => {
+              res.redirect('/');        
+          } );
+
+  conn.end();
 })
 
 app.use(express.static('frontend'))

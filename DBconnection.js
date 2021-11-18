@@ -4,9 +4,9 @@ function newConnection()
 {
     let conn = mysql.createConnection({
         host:'34.134.27.235',
-        user: 'user',
-        password:'6474584026Ab...',
-        database:'mysql-db-instance'
+        user: 'root',
+        password:'mypassword',
+        database:'usersDB'
     });
     return conn;
 }
