@@ -19,6 +19,9 @@ app.get('/timeDisplay', (req, res) => {
           timeList = rows;
 
           let content ='';
+
+          content += '<div> T1 : T2 : T3 : T4 : T5 : T6 : T7 : T8 : T9 : T10 </div>';
+          content += '\n';
           for (t of timeList)
           {
               content += '<div>';
