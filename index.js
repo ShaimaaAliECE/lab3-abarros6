@@ -1,8 +1,9 @@
 const express = require('express');
 const path = require('path');
 
+const filePath = path.join(__dirname, '/DBconnection.js')
 //this object can be used to create new db connections 
-const newConnection = require('./DBConnection');
+const newConnection = require(filePath);
 
 const app = express();
 
