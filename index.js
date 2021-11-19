@@ -26,6 +26,8 @@ app.get('/timeDisplay', (req, res) => {
               content += '</div>'
               content += '\n';
           }
+          content += '<br/>';
+          content += `<a href='/'>Click here to return to the homepage</a>`;
 
           res.send(content);
       }
@@ -53,6 +55,8 @@ app.get('/userDisplay', (req, res) => {
               content += '\n';
               content += '\n';
           }
+          content += '<br/>';
+          content += `<a href='/'>Click here to return to the homepage</a>`;
 
           res.send(content);
       }

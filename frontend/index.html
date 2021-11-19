@@ -9,6 +9,24 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
+        <h2>Doodle App</h2> 
+
+        <p>
+            All times are according to a 24 hour clock. <br> To use the app simply check the times list to see <br> when the available times are, then edit the <br> users list by following the below link to use the app <br> as a guest to enter your name and your specific availability.
+        </p>
+
+        <br/>
+
+        <a href='/guest'>Click here to sign in as a guest</a>
+
+        <br>
+        <br>
+        <br>
+
+        <hr>
+
+        <br/>
+
         <form action = '/login' method='get'> 
             user name : <input name = 'usr' type = 'text'/>
             <br/> 
@@ -16,13 +34,15 @@
             <br/>
             <input type = 'submit'/>
         </form>
+
         <br/>
         <br/>
         <br/>
-        <a href='/guest'>Click here to sign in as a guest</a>
 
         <div classname = 'timeTable'>
-
+            <form action = '/timeDisplay' method = 'get'>
+                <input type = 'submit' value = 'display the times'/>
+            </form>
         </div>
 
         <br/>
@@ -30,7 +50,9 @@
         <br/>
 
         <div classname = 'usersTable'>
-
+            <form action = '/userDisplay' method = 'get'>
+                <input type = 'submit' value = 'display the users with their availability'/>
+            </form>
         </div>
 
         

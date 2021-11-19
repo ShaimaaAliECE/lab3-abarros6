@@ -76,7 +76,7 @@ conn.query(`CREATE TABLE Users
                     console.log('Table Created');
             })
 
-conn.query( `insert into Time values (0,0,0,0,0,0,0,0,0,0)`
+conn.query( `insert into Time values (0,1,2,3,5,6,7,8,9,10)`
             , (err,rows,fields) => {
                 if (err)
                     console.log(err);
