@@ -102,7 +102,7 @@ app.get('/add-user', (req,res) => {
   conn.connect();
   conn.query(`insert into Users values ('${req.query.name}','${req.query.T1}','${req.query.T2}','${req.query.T3}','${req.query.T4}','${req.query.T5}','${req.query.T6}','${req.query.T7}','${req.query.T8}','${req.query.T9}','${req.query.T10}')`
           ,(err,rows,fields) => {
-              res.redirect('/userDisplay');        
+              res.redirect('/userDisplay');   
           } );
 
   conn.end();
